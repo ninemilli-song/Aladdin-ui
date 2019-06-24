@@ -6,7 +6,7 @@
   "scripts": {
     "build": "gulp release",
     "dev": "start-storybook",
-    "lint": "eslint",
+    "lint": "eslint \"src/**/*.js\" \"src/**/*.jsx\" --fix --ignore-path .gitignore",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
@@ -45,6 +45,7 @@
   },
   "dependencies": {
     "@babel/polyfill": "^7.4.4",
+    "prop-types": "^15.7.2",
     "react": "^16.8.6",
     "react-dom": "^16.8.6"
   },
@@ -55,7 +56,6 @@
   "husky": {
     "hooks": {
       "pre-commit": "npm run lint"
-//      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
     }
   },
   "browsers": "last 2 versions"

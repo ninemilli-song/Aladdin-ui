@@ -1,9 +1,10 @@
 import React from 'react';
 
-const HelloReact = (props) => {
-    return (
-        <span>Hello, React!</span>
-    )
-};
+const HelloReact = props => (
+    <span>
+        Hello, React!
+        {props}
+    </span>
+);
 
 export default HelloReact;
