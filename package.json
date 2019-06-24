@@ -53,7 +53,10 @@
     "caniuse-lite": "1.0.30000974"
   },
   "husky": {
-    "pre-commit": "npm run lint"
+    "hooks": {
+      "pre-commit": "npm run lint"
+//      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
+    }
   },
   "browsers": "last 2 versions"
 }
