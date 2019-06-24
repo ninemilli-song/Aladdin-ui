@@ -4,8 +4,7 @@
   "description": "aladdin ui components",
   "main": "index.js",
   "scripts": {
-    "build": "scripts/build.sh",
-    "build-gulp": "gulp release",
+    "build": "gulp release",
     "dev": "start-storybook",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
