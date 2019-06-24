@@ -6,7 +6,9 @@
   "scripts": {
     "build": "gulp release",
     "dev": "start-storybook",
-    "lint": "eslint \"src/**/*.js\" \"src/**/*.jsx\" --fix --ignore-path .gitignore",
+    "lint": "npm run lint-js && npm run lint-css",
+    "lint-js": "eslint \"src/**/*.js\" \"src/**/*.jsx\" --fix --ignore-path .gitignore",
+    "lint-css": "stylelint \"src/**/style/*.less\"",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
@@ -41,7 +43,9 @@
     "postcss-preset-env": "^6.6.0",
     "postcss-reporter": "^6.0.1",
     "precss": "^4.0.0",
-    "style-loader": "^0.23.1"
+    "style-loader": "^0.23.1",
+    "stylelint": "^10.1.0",
+    "stylelint-config-standard": "^18.3.0"
   },
   "dependencies": {
     "@babel/polyfill": "^7.4.4",

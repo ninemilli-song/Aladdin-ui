@@ -7,6 +7,8 @@ Aladdin say: 许个愿望，要啥有啥！
 
 基于 React 16.8 版本以上的 UI 组件库
 
+采用最严格的代码规范[eslint-config-airbnb](https://github.com/airbnb/javascript)，在提交代码前加入 commit hooks（[husky](https://github.com/typicode/husky)） 进行校验，在这里写代码要有洁癖！
+
 ## 组件库
 
 | 组件名 | 说明 | 文档 |
