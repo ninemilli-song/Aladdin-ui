@@ -25,6 +25,7 @@ Aladdin say: 许个愿望，要啥有啥！
 | Storybook | 组件开发框架 | [https://storybook.js.org/](https://storybook.js.org/) |
 | Gulp | 工程构建工具 | [https://gulpjs.com/](https://gulpjs.com/) |
 | eslint-config-airbnb | 史上最严格的代码校验规范 | [https://github.com/airbnb/javascript](https://github.com/airbnb/javascript) |
+| stylelint | 样式校验 | [https://stylelint.io/](https://stylelint.io/) |
 | husky | Git hooks | [https://github.com/typicode/husky](https://github.com/typicode/husky) |
 
 ## 目录
@@ -36,6 +37,7 @@ Aladdin say: 许个愿望，要啥有啥！
 │
 ├── scripts                 # 脚本文件
 ├── .eslintrc.json          # eslint配置文件
+├── .stylelintrc            # stylelint 配置文件
 ├── package.json            # npm package.josn
 ├── gulpfile.js             # gulpfile 配置文件
 └── babel.config.js         # babel 配置文件
