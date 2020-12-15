@@ -1,71 +1,53 @@
-var gulp = require('gulp');
-var babel = require("gulp-babel");
-var sourcemaps = require('gulp-sourcemaps');
-var uglify = require('gulp-uglify');
-var rm = require('del');
-var less = require('gulp-less');
-var autoprefixer = require('autoprefixer');
-var cssnano = require('cssnano');
-var postcss = require('gulp-postcss');
+const gulp = require('gulp');
+const babel = require('gulp-babel');
+
+const paths = {
+  dest: {
+    lib: 'lib', // commonjs 文件存放的目录名 - 本块关注
+    esm: 'esm', // ES module 文件存放的目录名 - 暂时不关心
+    dist: 'dist', // umd文件存放的目录名 - 暂时不关心
+  },
+  styles: 'components/**/*.less', // 样式文件路径 - 暂时不关心
+  scripts: ['components/**/*.{ts,tsx}', '!components/**/demo/*.{ts,tsx}'], // 脚本文件路径
+};
 
 /**
- * 清空编译目录
+ * 编译脚本文件
+ * @param {string} babelEnv babel环境变量
+ * @param {string} destDir 目标目录
  */
-gulp.task('clean', done => {
-    rm.sync(['dist/**']);
-    done();
-});
+function compileScripts(babelEnv, destDir) {
+  const { scripts } = paths;
+  // 设置环境变量
+  process.env.BABEL_ENV = babelEnv;
+  return gulp
+    .src(scripts)
+    .pipe(babel()) // 使用gulp-babel处理
+    .pipe(gulp.dest(destDir));
+}
 
 /**
- * 构建 js
+ * 编译cjs
  */
-gulp.task('js', done => {
-    // 任务代码在这
-    gulp.src(['src/**/*.js', 'src/**/*.jsx'])
-        .pipe(sourcemaps.init())
-        .pipe(babel({
-            presets: ['@babel/env','@babel/preset-react']
-        }))
-        .pipe(uglify())
-        .pipe(sourcemaps.write('.'))
-        .pipe(gulp.dest('dist'));
-
-    done();
-});
+function compileCJS() {
+  const { dest } = paths;
+  return compileScripts('cjs', dest.lib);
+}
 
 /**
- * 构建 css
+ * 编译esm
  */
-gulp.task('css', done => {
-    var plugins = [
-        autoprefixer(),
-        cssnano()
-    ];
+function compileESM() {
+  const { dest } = paths;
+  return compileScripts('esm', dest.esm);
+}
 
-    // 任务代码在这
-    gulp.src(['src/**/style/*.less'])
-        .pipe(sourcemaps.init())
-        .pipe(less())
-        .pipe(postcss(plugins))
-        .pipe(sourcemaps.write('.'))
-        .pipe(gulp.dest('dist'));
+// 串行执行编译脚本任务（cjs,esm） 避免环境变量影响
+const buildScripts = gulp.series(compileCJS, compileESM);
 
-    done();
-});
+// 整体并行执行任务
+const build = gulp.parallel(buildScripts);
 
-/**
- * 拷贝 less
- */
-gulp.task('less', done => {
-    // 任务代码在这
-    gulp.src(['src/**/style/*.less'])
-        .pipe(gulp.dest('dist'));
+exports.build = build;
 
-    done();
-});
-
-/**
- * 构建
- */
-gulp.task('release', gulp.series('clean', gulp.parallel('css', 'js')));
-
+exports.default = build;
