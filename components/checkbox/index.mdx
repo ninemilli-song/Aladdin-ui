@@ -1,0 +1,26 @@
+---
+name: Checkbox 复选框
+route: /Checkbox
+menu: 组件
+---
+import { AladdinBox } from '../../doc-comps';
+import BasicDemo from './demo/1-demo-basic';
+import BasicDemoCode from '!raw-loader!./demo/1-demo-basic.tsx';
+
+# Checkbox 复选框
+
+Checkbox 复选框。
+
+## 代码演示
+
+### 基本用法
+
+<AladdinBox code={BasicDemoCode} title="基本用法" desc="使用kind控制Alert类型">
+  <BasicDemo />
+</AladdinBox>
+
+## API
+
+| 属性 | 说明     | 类型                                         | 默认值 |
+| ---- | -------- | -------------------------------------------- | ------ |
+| kind | 警告类型 | 'info'/'positive'/'negative'/'warning'非必填 | 'info' |

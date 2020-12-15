@@ -22,7 +22,7 @@ const CheckBox: React.FC<CheckBoxProps> = (props) => {
       }}
     >
       Hello CheckBox!
-      {info}
+      {kind}
     </div>
   );
 };

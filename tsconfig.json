@@ -1,6 +1,11 @@
 {
   "compilerOptions": {
     "baseUrl": "./",
+    "paths": {
+      "aladdin-ui": ["components/index.ts"],
+      "aladdin-ui/esm/*": ["components/*"],
+      "aladdin-ui/lib/*": ["components/*"]
+    },
     "target": "esnext",
     "module": "commonjs",
     "jsx": "react",
