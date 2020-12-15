@@ -12,17 +12,18 @@ const kinds: KindMap = {
 
 const prefixCls = 'aladdin-checkbox';
 
-const CheckBox: React.FC<CheckBoxProps> = (props) => {
-  const { kind } = props;
+const CheckBox: React.FC<CheckBoxProps> = ({ children, kind = 'info', ...rest }) => {
   return (
     <div
       className={prefixCls}
       style={{
         background: kinds[kind],
       }}
+      {...rest}
     >
       Hello CheckBox!
       {kind}
+      children
     </div>
   );
 };

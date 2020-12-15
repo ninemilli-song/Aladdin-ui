@@ -3,5 +3,6 @@ dist/
 node_modules/
 todo
 .docz/
-.lib/
-.esm/
+lib/
+esm/
+yarn-*.log
