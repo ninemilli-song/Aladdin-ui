@@ -13,6 +13,7 @@
     "build": "npm run clean && npm run build:types && gulp",
     "build:doc": "rimraf doc-site && docz build",
     "build:types": "tsc -p tsconfig.build.json && cpr lib esm",
+    "new": "plop --plopfile ./scripts/plopfile.ts",
     "preview:doc": "docz serve"
   },
   "author": "",
@@ -43,6 +44,7 @@
     "husky": "^4.3.6",
     "less": "^3.13.0",
     "lint-staged": "^10.5.3",
+    "plop": "^2.7.4",
     "prettier": "^2.2.1",
     "prismjs": "^1.22.0",
     "raw-loader": "^4.0.2",
@@ -54,6 +56,7 @@
     "react-tooltip": "^4.2.11",
     "react-use": "^15.3.4",
     "rimraf": "^3.0.2",
+    "semver": "^7.3.4",
     "styled-components": "^5.2.1",
     "through2": "^4.0.2",
     "typescript": "^4.1.3"
@@ -79,6 +82,12 @@
       "pre-commit": "lint-staged"
     }
   },
+  "sideEffects": [
+    "dist/*",
+    "esm/**/style/*",
+    "lib/**/style/*",
+    "*.less"
+  ],
   "config": {
     "commitizen": {
       "path": "cz-conventional-changelog"
