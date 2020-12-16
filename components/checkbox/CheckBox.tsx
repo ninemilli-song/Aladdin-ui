@@ -21,9 +21,7 @@ const CheckBox: React.FC<CheckBoxProps> = ({ children, kind = 'info', ...rest })
       }}
       {...rest}
     >
-      Hello CheckBox!
-      {kind}
-      children
+      {children}
     </div>
   );
 };
